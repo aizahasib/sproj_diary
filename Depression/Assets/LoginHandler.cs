@@ -30,10 +30,12 @@ public class LoginHandler : MonoBehaviour {
   private string logText = "";
     public Text emailText;
     public Text passwordText;
-  protected string email = "";
+    static public string id;
+  static public string email = "";
   protected string password = "";
   protected string displayName = "";
   private bool fetchingToken = false;
+  public bool loadscene=false;
 
   const int kMaxLogSize = 16382;
   Firebase.DependencyStatus dependencyStatus = Firebase.DependencyStatus.UnavailableOther;
@@ -70,6 +72,9 @@ public class LoginHandler : MonoBehaviour {
     }
         email = emailText.text;
         password = passwordText.text;
+        if(loadscene){
+          SceneManager.LoadSceneAsync("scene_2");
+        }
   }
 
   void OnDestroy() {
@@ -203,9 +208,11 @@ public class LoginHandler : MonoBehaviour {
                              string newDisplayName = null) {
     if (LogTaskCompletion(authTask, "User Creation")) {
       if (auth.CurrentUser != null) {
-        FirebaseDatabase.DefaultInstance.GetReference("Users").Child(auth.CurrentUser.UserId).Child("email").SetValueAsync(email);
-        DebugLog(String.Format("User Info: {0}  {1}", auth.CurrentUser.Email,
-                               auth.CurrentUser.ProviderId));
+        
+        //FirebaseDatabase.DefaultInstance.GetReference("Users").Child(auth.CurrentUser.UserId).Child("email").SetValueAsync(email);
+        FirebaseDatabase.DefaultInstance.GetReference("Users").Child(id).Child("email").SetValueAsync(email);
+       // DebugLog(String.Format("User Info: {0}  {1}", auth.CurrentUser.Email,
+        //                       auth.CurrentUser.ProviderId));
         return UpdateUserProfileAsync(newDisplayName: newDisplayName);
       }
     }
@@ -243,7 +250,9 @@ public class LoginHandler : MonoBehaviour {
 
   void HandleSigninResult(Task<Firebase.Auth.FirebaseUser> authTask) {
     LogTaskCompletion(authTask, "Sign-in");
-        SceneManager.LoadSceneAsync("scene_2");
+    loadscene=true;
+    id=auth.CurrentUser.UserId.ToString();
+        //SceneManager.LoadSceneAsync("scene_2");
   }
 
   public void ReloadUser() {

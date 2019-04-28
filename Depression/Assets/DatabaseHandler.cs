@@ -99,11 +99,11 @@ private string email="";
          GameObject item = slotTransform.GetComponent<Slot>().item;
          if (item){
              inventoryName[index]=item.name;
-             FirebaseDatabase.DefaultInstance.GetReference("Users").Child(emailText.text).Child("inventory").Child(index.ToString()).SetValueAsync(item.name);
+             FirebaseDatabase.DefaultInstance.GetReference("Users").Child(LoginHandler.id).Child("inventory").Child(index.ToString()).SetValueAsync(item.name);
 
          }else{
             inventoryName[index]=null;
-            FirebaseDatabase.DefaultInstance.GetReference("Users").Child(emailText.text).Child("inventory").Child(index.ToString()).SetValueAsync("null");
+            FirebaseDatabase.DefaultInstance.GetReference("Users").Child(LoginHandler.id).Child("inventory").Child(index.ToString()).SetValueAsync("null");
          }
          index++;
      }
