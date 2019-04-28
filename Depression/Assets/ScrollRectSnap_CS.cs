@@ -65,7 +65,6 @@ public class ScrollRectSnap_CS : MonoBehaviour
 
 		if (!dragging)
 		{
-		//	LerpToBttn(minButtonNum * -bttnDistance);
 			LerpToBttn (-bttn[minButtonNum].GetComponent<RectTransform>().anchoredPosition.x);
 		}
 	}

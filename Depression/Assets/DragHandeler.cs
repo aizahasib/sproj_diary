@@ -6,7 +6,6 @@ using UnityEngine.EventSystems;
  public static GameObject itemBeingDraged;
  Vector3 startPosition;
  Transform startParent;
- 
  #region IBeginDragHandler implementation
  public void OnBeginDrag (PointerEventData eventData)
  {

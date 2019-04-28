@@ -8,6 +8,7 @@
  [SerializeField] Transform slots;
  [SerializeField] Text inventoryText;
 
+ 
 
  
  // Use this for initialization
@@ -21,11 +22,13 @@
  {
      System.Text.StringBuilder builder = new System.Text.StringBuilder();
      builder.Append (" - ");
+   
      foreach (Transform slotTransform in slots) {
          GameObject item = slotTransform.GetComponent<Slot>().item;
          if (item){
              builder.Append (item.name);
              builder.Append (" - ");
+
          }
      }
      inventoryText.text = builder.ToString ();
