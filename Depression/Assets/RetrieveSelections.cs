@@ -34,20 +34,17 @@ public string[] inventoryN=new string[12];
 protected Firebase.Auth.FirebaseAuth auth;
   private const int MaxScores = 5;
   private string logText = "";
-  public Text emailText;
   private string name = "";
   private int score = 100;
-    private bool addScorePressed;
 private string inventory = "";
-private string email="";
   const int kMaxLogSize = 16382;
+  public bool done=false;
   DependencyStatus dependencyStatus = DependencyStatus.UnavailableOther;
 
   // When the app starts, check to make sure that we have
   // the required dependencies to use Firebase, and if not,
   // add them if possible.
   void Start() {
-        addScorePressed = true;
     FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task => {
       dependencyStatus = task.Result;
       if (dependencyStatus == DependencyStatus.Available) {
@@ -67,8 +64,14 @@ private string email="";
     app.SetEditorDatabaseUrl("https://diary-3d3a4.firebaseio.com/");
     if (app.Options.DatabaseUrl != null) app.SetEditorDatabaseUrl(app.Options.DatabaseUrl);
     //StartListener();
+    done=true;
   }
 
+ public void Update() {
+        if(done){
+          AddImages();
+        }
+  }
 
   // Output text to the debug log text field, as well as the console.
   public void DebugLog(string s) {
@@ -110,7 +113,5 @@ private string email="";
     // Use a transaction to ensure that we do not encounter issues with
     // simultaneous updates that otherwise might create more than MaxScores top scores.
     
-        //update UI
-        addScorePressed = true;
     }
 }

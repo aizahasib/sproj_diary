@@ -36,12 +36,10 @@ protected Firebase.Auth.FirebaseAuth auth;
   private const int MaxScores = 5;
   private string logText = "";
   public Text inventoryText;
-  public Text emailText;
   private string name = "";
   private int score = 100;
     private bool addScorePressed;
 private string inventory = "";
-private string email="";
   const int kMaxLogSize = 16382;
   DependencyStatus dependencyStatus = DependencyStatus.UnavailableOther;
 

@@ -9,6 +9,11 @@ public class ScrollRectSnap_CS : MonoBehaviour
 	public RectTransform[] bttn;
 	public RectTransform center;	// Center to compare the distance for each button
 
+
+	//for emotion panel
+	public RectTransform emotion_panel;	// To hold the ScrollPanel
+	public RectTransform[] emotion_bttn;
+
 	// Private Variables
 	public float[] distance;	// All buttons' distance to the center
 	public float[] distReposition;
@@ -38,18 +43,22 @@ public class ScrollRectSnap_CS : MonoBehaviour
 			{
 				float curX = bttn[i].GetComponent<RectTransform>().anchoredPosition.x;
 				float curY = bttn[i].GetComponent<RectTransform>().anchoredPosition.y;
-
+				float emotion_curY = emotion_bttn[i].GetComponent<RectTransform>().anchoredPosition.y;
 				Vector2 newAnchoredPos = new Vector2 (curX + (bttnLength * bttnDistance), curY);
+				Vector2 emotion_newAnchoredPos = new Vector2 (curX + (bttnLength * bttnDistance), emotion_curY);
 				bttn[i].GetComponent<RectTransform>().anchoredPosition = newAnchoredPos;
+				emotion_bttn[i].GetComponent<RectTransform>().anchoredPosition = emotion_newAnchoredPos;
 			}
 
 			if (distReposition[i] < -1200)
 			{
 				float curX = bttn[i].GetComponent<RectTransform>().anchoredPosition.x;
 				float curY = bttn[i].GetComponent<RectTransform>().anchoredPosition.y;
-
+				float emotion_curY = emotion_bttn[i].GetComponent<RectTransform>().anchoredPosition.y;
 				Vector2 newAnchoredPos = new Vector2 (curX - (bttnLength * bttnDistance), curY);
+				Vector2 emotion_newAnchoredPos = new Vector2 (curX - (bttnLength * bttnDistance), emotion_curY);
 				bttn[i].GetComponent<RectTransform>().anchoredPosition = newAnchoredPos;
+				emotion_bttn[i].GetComponent<RectTransform>().anchoredPosition = emotion_newAnchoredPos;
 			}
 		}
 	
@@ -73,8 +82,9 @@ public class ScrollRectSnap_CS : MonoBehaviour
 	{
 		float newX = Mathf.Lerp (panel.anchoredPosition.x, position, Time.deltaTime * 5f);
 		Vector2 newPosition = new Vector2 (newX, panel.anchoredPosition.y);
-
+		Vector2 emotion_newPosition = new Vector2 (newX, emotion_panel.anchoredPosition.y);
 		panel.anchoredPosition = newPosition;
+		emotion_panel.anchoredPosition=emotion_newPosition;
 	}
 
 	public void StartDrag()
