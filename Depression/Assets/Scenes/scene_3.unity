@@ -483,7 +483,7 @@ GameObject:
   - component: {fileID: 62140125}
   - component: {fileID: 62140126}
   m_Layer: 5
-  m_Name: Panel (5)
+  m_Name: B2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1474,7 +1474,7 @@ GameObject:
   - component: {fileID: 225831741}
   - component: {fileID: 225831742}
   m_Layer: 5
-  m_Name: Panel (6)
+  m_Name: A2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4265,7 +4265,7 @@ GameObject:
   - component: {fileID: 739970012}
   - component: {fileID: 739970013}
   m_Layer: 5
-  m_Name: Panel (7)
+  m_Name: D5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5727,7 +5727,7 @@ GameObject:
   - component: {fileID: 951230585}
   - component: {fileID: 951230586}
   m_Layer: 5
-  m_Name: Panel (3)
+  m_Name: B3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5966,7 +5966,7 @@ GameObject:
   - component: {fileID: 1081869791}
   - component: {fileID: 1081869792}
   m_Layer: 5
-  m_Name: Panel (4)
+  m_Name: C3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6416,7 +6416,7 @@ GameObject:
   - component: {fileID: 1148061321}
   - component: {fileID: 1148061320}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Enter Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6478,7 +6478,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1148061321}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1724943064}
+        m_MethodName: AddScore
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1148061321
@@ -6774,7 +6785,7 @@ GameObject:
   - component: {fileID: 1225542902}
   - component: {fileID: 1225542903}
   m_Layer: 5
-  m_Name: Panel (1)
+  m_Name: A1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9524,7 +9535,7 @@ GameObject:
   - component: {fileID: 1724943062}
   - component: {fileID: 1724943064}
   m_Layer: 0
-  m_Name: GameController3
+  m_Name: GameController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9915,7 +9926,7 @@ GameObject:
   - component: {fileID: 1794378200}
   - component: {fileID: 1794378201}
   m_Layer: 5
-  m_Name: Panel (2)
+  m_Name: C2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11893,7 +11904,7 @@ GameObject:
   - component: {fileID: 2091766553}
   - component: {fileID: 2091766552}
   m_Layer: 5
-  m_Name: Text
+  m_Name: title question
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12186,7 +12197,7 @@ GameObject:
   - component: {fileID: 2105062870}
   - component: {fileID: 2105062871}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: A1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

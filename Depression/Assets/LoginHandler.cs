@@ -73,7 +73,7 @@ public class LoginHandler : MonoBehaviour {
         email = emailText.text;
         password = passwordText.text;
         if(loadscene){
-          SceneManager.LoadSceneAsync("scene_2");
+          SceneManager.LoadSceneAsync("scene_2.1");
         }
   }
 

@@ -26,11 +26,9 @@ using UnityEngine.SceneManagement;
 // necessary setup (initializing the firebase app, etc) on
 // startup.
 
-public class scene3_db : MonoBehaviour {
+public class month_date : MonoBehaviour {
 
-[SerializeField] Transform slots;
 
-static public string[] inventoryName;
   ArrayList leaderBoard;
 protected Firebase.Auth.FirebaseAuth auth;
   private const int MaxScores = 5;
@@ -38,7 +36,10 @@ protected Firebase.Auth.FirebaseAuth auth;
   private string name = "";
   private int score = 100;
     private bool addScorePressed;
-private string inventory = "";
+    public Text monthText;
+    public Text dateText;
+    static public string month;
+    static public string date;
   const int kMaxLogSize = 16382;
   DependencyStatus dependencyStatus = DependencyStatus.UnavailableOther;
 
@@ -47,7 +48,6 @@ private string inventory = "";
   // add them if possible.
   void Start() {
         addScorePressed = true;
-     inventoryName=new string[12];
     FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task => {
       dependencyStatus = task.Result;
       if (dependencyStatus == DependencyStatus.Available) {
@@ -89,33 +89,12 @@ private string inventory = "";
 
 
 
-  public void AddScore() {
-     int index=0;
-     
-         foreach (Transform slotTransform in slots) { 
-         GameObject item = slotTransform.GetComponent<Slot>().item;
-         if (item){
-             inventoryName[index]=item.name;
-             FirebaseDatabase.DefaultInstance.GetReference("Users").Child(LoginHandler.id).Child(month_date.month).Child(month_date.date).Child("emotions").Child(index.ToString()).SetValueAsync(item.name);
-
-         }else{
-            inventoryName[index]=null;
-            FirebaseDatabase.DefaultInstance.GetReference("Users").Child(LoginHandler.id).Child(month_date.month).Child(month_date.date).Child("emotions").Child(index.ToString()).SetValueAsync("null");
-         }
-         index++;
-     }
+  public void Enter() {
     
-/*auth = Firebase.Auth.FirebaseAuth.DefaultInstance;
-  //DebugLog(auth.CurrentUser.UserId);
-  if(auth.CurrentUser!=null){
-      
-      DebugLog("it is null");
-    }else {}*/
-    
-    
+      month=monthText.text;
+      date=dateText.text;
         addScorePressed = true;
-        SceneManager.LoadSceneAsync("scene_4");
-        //SceneManager.LoadSceneAsync("scene_3");
+        SceneManager.LoadSceneAsync("scene_2");
     }
 
 

@@ -92,7 +92,7 @@ private string inventory = "";
 
   public void AddImages() {
      int index=0;
-     //var names = PlayerPrefsX.GetStringArray("inventoryName");
+
      for (int a = 0; a < 12; a++)
      {
        inventoryN[a]=DatabaseHandler.inventoryName[a];  
@@ -104,16 +104,16 @@ private string inventory = "";
           GameObject item = slotTransform.GetComponent<Slot>().item;
           GameObject boxClone;
           GameObject box = item;
-          //if (item.name.Contains("(")){
-           //  item.name = item.name.Substring(0,item.name.IndexOf("(")); 
-          //}
+  
 
-          if(inventoryN[i]!= null && item!=null && item.name == inventoryN[i]){ 
+
+          if(inventoryN[i]!= null && item!=null && item.name == inventoryN[i] && selectedSlots.GetChild (i).transform.childCount==0){ 
               boxClone = Instantiate (box) as GameObject; // clone box
               boxClone.transform.SetParent( item.transform.parent);
               boxClone.GetComponent<CanvasGroup>().blocksRaycasts = true;
+              boxClone.transform.localScale += new Vector3(0.5F, 0.5F, 0.5F);
               slotTransform.GetComponent<Slot>().item.transform.SetParent (selectedSlots.GetChild (i));
-              //boxClone.name=item.name;
+              boxClone.name=item.name;
               break;
           }
      }
