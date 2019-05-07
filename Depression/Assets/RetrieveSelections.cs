@@ -22,6 +22,8 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Threading;
+using System.Globalization;
 
 // Handler for UI buttons on the scene.  Also performs some
 // necessary setup (initializing the firebase app, etc) on
@@ -100,18 +102,23 @@ private string inventory = "";
 
         foreach (Transform slotTransform in imageSlots){
           GameObject item = slotTransform.GetComponent<Slot>().item;
+          GameObject boxClone;
+          GameObject box = item;
+          //if (item.name.Contains("(")){
+           //  item.name = item.name.Substring(0,item.name.IndexOf("(")); 
+          //}
 
-          if(inventoryN[i]!= null && item!=null && item.name == inventoryN[i]){
+          if(inventoryN[i]!= null && item!=null && item.name == inventoryN[i]){ 
+              boxClone = Instantiate (box) as GameObject; // clone box
+              boxClone.transform.SetParent( item.transform.parent);
+              boxClone.GetComponent<CanvasGroup>().blocksRaycasts = true;
               slotTransform.GetComponent<Slot>().item.transform.SetParent (selectedSlots.GetChild (i));
-             break;
+              //boxClone.name=item.name;
+              break;
           }
      }
 
      }
-
-
-    // Use a transaction to ensure that we do not encounter issues with
-    // simultaneous updates that otherwise might create more than MaxScores top scores.
     
     }
 }

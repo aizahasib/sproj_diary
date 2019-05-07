@@ -24,7 +24,8 @@ public class Slot : MonoBehaviour, IDropHandler {
             //Store = box.transform.parent.parent.parent.parent.gameObject; // set store equal to parent of box
             boxClone = Instantiate (box) as GameObject; // clone box
             boxClone.transform.SetParent( DragHandeler.itemBeingDraged.transform.parent);
-            //boxClone.AddComponent("DragHandeler");
+            boxClone.GetComponent<CanvasGroup>().blocksRaycasts = true;
+            //boxClone.AddComponent<DragHandeler>();
 
             //boxClone.transform.SetParent(Store.transform); 
             //UnityEditor.GameObjectUtility.SetParentAndAlign(boxClone, box.transform.parent.parent.parent.parent.gameObject);
